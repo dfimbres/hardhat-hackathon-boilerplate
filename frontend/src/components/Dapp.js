@@ -1,5 +1,7 @@
 import React from "react";
-
+import HeaderNotLoggedIn from './ui components/header-not-logged-in.js'
+import HeaderSignedIn from './ui components/header-signed-in.js'
+import CreateEvent from './ui components/createEvent.js'
 // We'll use ethers to interact with the Ethereum network and our contract
 import { ethers } from "ethers";
 
@@ -12,12 +14,12 @@ import contractAddress from "../contracts/contract-address.json";
 // These other components are just presentational ones: they don't have any
 // logic. They just render HTML.
 import { NoWalletDetected } from "./NoWalletDetected";
-import { ConnectWallet } from "./ConnectWallet";
 import { Loading } from "./Loading";
 import { Transfer } from "./Transfer";
 import { TransactionErrorMessage } from "./TransactionErrorMessage";
 import { WaitingForTransactionMessage } from "./WaitingForTransactionMessage";
 import { NoTokensMessage } from "./NoTokensMessage";
+// import { Switch } from "@mui/material";
 
 // This is the Hardhat Network id, you might change it in the hardhat.config.js.
 // If you are using MetaMask, be sure to change the Network id to 1337.
@@ -66,6 +68,7 @@ export class Dapp extends React.Component {
       return <NoWalletDetected />;
     }
 
+
     // The next thing we need to do, is to ask the user to connect their wallet.
     // When the wallet gets connected, we are going to save the users's address
     // in the component's state. So, if it hasn't been saved yet, we have
@@ -75,11 +78,9 @@ export class Dapp extends React.Component {
     // clicks a button. This callback just calls the _connectWallet method.
     if (!this.state.selectedAddress) {
       return (
-        <ConnectWallet 
-          connectWallet={() => this._connectWallet()} 
-          networkError={this.state.networkError}
-          dismiss={() => this._dismissNetworkError()}
-        />
+        <>
+        <HeaderNotLoggedIn walletConnectAction={()=>this._connectWallet()}/>
+        </>
       );
     }
 
@@ -90,7 +91,9 @@ export class Dapp extends React.Component {
     }
 
     // If everything is loaded, we render the application.
-    return (
+    return (   
+      <>
+      <HeaderSignedIn/>
       <div className="container p-4">
         <div className="row">
           <div className="col-12">
@@ -102,12 +105,10 @@ export class Dapp extends React.Component {
               <b>
                 {this.state.balance.toString()} {this.state.tokenData.symbol}
               </b>
-              .
             </p>
           </div>
         </div>
 
-        <hr />
 
         <div className="row">
           <div className="col-12">
@@ -159,6 +160,7 @@ export class Dapp extends React.Component {
           </div>
         </div>
       </div>
+      </>
     );
   }
 
@@ -195,10 +197,10 @@ export class Dapp extends React.Component {
       if (newAddress === undefined) {
         return this._resetState();
       }
-      
+
       this._initialize(newAddress);
     });
-    
+
     // We reset the dapp state if the network is changed
     window.ethereum.on("chainChanged", ([networkId]) => {
       this._stopPollingData();
@@ -361,7 +363,7 @@ export class Dapp extends React.Component {
       return true;
     }
 
-    this.setState({ 
+    this.setState({
       networkError: 'Please connect Metamask to Localhost:8545'
     });
 

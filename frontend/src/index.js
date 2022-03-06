@@ -1,16 +1,15 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { Dapp } from "./components/Dapp";
-
-// We import bootstrap here, but you can remove if you want
 import "bootstrap/dist/css/bootstrap.css";
+import CreateEvent from './components/ui components/createEvent.js'
 
 // This is the entry point of your application, but it just renders the Dapp
 // react component. All of the logic is contained in it.
 
 ReactDOM.render(
   <React.StrictMode>
-    <Dapp />
+    <Dapp/>
   </React.StrictMode>,
   document.getElementById("root")
 );
