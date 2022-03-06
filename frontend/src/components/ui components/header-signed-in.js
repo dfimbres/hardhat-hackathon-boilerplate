@@ -5,9 +5,15 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import LocalActivityIcon from '@mui/icons-material/LocalActivity';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom'
 
 export default function ButtonAppBar() {
+  const navigate = useNavigate()
+
+  function handleCreateEvent() {
+    navigate("/create-event")
+  }
+
   return (
       
     <Box sx={{ flexGrow: 1 }}>
@@ -22,11 +28,10 @@ export default function ButtonAppBar() {
           >
           </LocalActivityIcon>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            NFTicket
+          <Link style={{color: 'white'}} to ="/">NFTicket</Link>
           </Typography>
-          <Link to="/expenses">Expenses</Link>
 
-          <Button style = {{marginRight: '5px', color: '#007bff', backgroundColor: "white"}} variant="contained" >Create an Event</Button>
+          <Button onClick={handleCreateEvent} style = {{marginRight: '5px', color: '#007bff', backgroundColor: "white"}} variant="contained" >Create an Event</Button>
           <Button style = {{marginRight: '5px'}} variant="contained"> My Events </Button>
         </Toolbar>
       </AppBar>

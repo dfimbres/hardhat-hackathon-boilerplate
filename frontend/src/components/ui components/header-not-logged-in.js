@@ -6,10 +6,10 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import LocalActivityIcon from '@mui/icons-material/LocalActivity';
 import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
+import { Link } from 'react-router-dom';
 
 export default function ButtonAppBar({walletConnectAction }) {
   return (
-      
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
         <Toolbar>
@@ -22,7 +22,7 @@ export default function ButtonAppBar({walletConnectAction }) {
           >
           </LocalActivityIcon>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            NFTicket
+          <Link style={{color: 'white'}} to ="/">NFTicket</Link>
           </Typography>
           <Button onClick={walletConnectAction}  color="inherit">Connect Wallet⠀ 
           <AccountBalanceWalletIcon/>
