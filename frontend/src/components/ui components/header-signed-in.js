@@ -14,6 +14,11 @@ export default function ButtonAppBar() {
     navigate("/create-event")
   }
 
+  function handlemyEvents() {
+    navigate("/my-events")
+  }
+
+
   return (
       
     <Box sx={{ flexGrow: 1 }}>
@@ -32,7 +37,7 @@ export default function ButtonAppBar() {
           </Typography>
 
           <Button onClick={handleCreateEvent} style = {{marginRight: '5px', color: '#007bff', backgroundColor: "white"}} variant="contained" >Create an Event</Button>
-          <Button style = {{marginRight: '5px'}} variant="contained"> My Events </Button>
+          <Button onClick={handlemyEvents} style = {{marginRight: '5px'}} variant="contained"> My Events </Button>
         </Toolbar>
       </AppBar>
     </Box>

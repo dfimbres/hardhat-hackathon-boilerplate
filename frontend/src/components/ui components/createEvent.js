@@ -29,7 +29,7 @@ export default function BasicGrid() {
     const navigate = useNavigate();
 
     function handleConfirmation() {
-        navigate("/select-recipients")
+        alert('Event Minted')
     }
 
     const [eventDate, setEventDate] = React.useState(new Date());
@@ -90,7 +90,7 @@ export default function BasicGrid() {
             </Box>
             <div style={{ textAlign: 'center', paddingTop: '25px' }}>
                 <Button variant='outlined' onClick={handleConfirmation}>
-                    Select Recipients <ArrowForwardIosIcon style={{fontSize: '75%'}}/>
+                    Mint Event <ArrowForwardIosIcon style={{fontSize: '75%'}}/>
                 </Button>
             </div>
         </>

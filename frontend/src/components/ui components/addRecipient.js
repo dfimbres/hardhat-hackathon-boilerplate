@@ -13,6 +13,7 @@ export default function BasicTextFields() {
             <TextField style={{ marginBottom: '15px'}}id="filled-basic" label="Last Name" variant="filled" />
         </div>
         <TextField style={{width: "400px"}} id="filled-basic" label="Recipient Address (Public Key)" variant="filled" />
+        <br/>
         <Button style={{marginTop: "20px"}} className="center" variant="contained">Add Recipient</Button>
 
       </div>

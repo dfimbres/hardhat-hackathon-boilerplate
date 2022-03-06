@@ -7,7 +7,7 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
-
+import MyEvents from './components/ui components/myEvents.js'
 import "bootstrap/dist/css/bootstrap.css";
 import CreateEvent from './components/ui components/createEvent.js'
 
@@ -21,6 +21,7 @@ render(
       <Route path="/" element={<Dapp />} />
       <Route path="create-event" element={<CreateEvent />} />
       <Route path="select-recipients" element={<SelectRecipients />} />
+      <Route path="my-events" element ={<MyEvents />} />
     </Routes>
     </React.StrictMode>
   </BrowserRouter>,
